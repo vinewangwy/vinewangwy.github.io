@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>adonuxt和koa对比</title>
+    <url>/2020/03/13/adonuxt%E5%92%8Ckoa%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<p>最近分别接触了一下adonuxt和koa，做了CRUD的demo</p>
+<p>koa<br>开发流程：</p>
+<ul>
+<li>框架搭建</li>
+<li>数据库建表</li>
+<li>sequelize从数据库导出表格到model</li>
+<li>补全相关的增删查改逻辑</li>
+<li>通过route配置接口内容</li>
+<li>前端调用</li>
+</ul>
+<p>adonuxt<br>adonis+nuxt的组合<br>开发流程：</p>
+<ul>
+<li>框架搭建</li>
+<li>adonis make:migration 生成schema，在schema中使用knex建表（好处是方便以后可能存在的数据库迁移）</li>
+<li>adonis make:controller 生成controller，controller中自带增删查改方法，只需要在对应方法中梳理相关逻辑即可</li>
+<li>通过route配置接口内容</li>
+<li>前端调用</li>
+</ul>
+<p>开发过程中用postman测试接口</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具人</title>
+    <url>/2020/02/12/%E5%B7%A5%E5%85%B7%E4%BA%BA/</url>
+    <content><![CDATA[<p>自用趁手工具，记得要不定期记录一下</p>
+<h3 id="gulp配置热更新"><a href="#gulp配置热更新" class="headerlink" title="gulp配置热更新"></a>gulp配置热更新</h3><p>适用于自己做demo，模块化开发还是用webpack吧</p>
+<p>初始化环境：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p>安装gulp：<br>全局没有gulp需要先执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --global gulp</span><br></pre></td></tr></table></figure>
+<p>在项目根目录执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install gulp --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>安装browser-sync：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install browser-sync --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>配置gulpfile.js：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var gulp        = require(&apos;gulp&apos;);</span><br><span class="line">var browserSync = require(&apos;browser-sync&apos;).create();</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;browser-sync&apos;, function() &#123;</span><br><span class="line">    var files = [</span><br><span class="line">    &apos;**/*.html&apos;,   // 监听html</span><br><span class="line">    &apos;**/*.css&apos;, // 监听css</span><br><span class="line">    &apos;**/*.js&apos; // 监听js</span><br><span class="line">    ];</span><br><span class="line">    browserSync.init(files,&#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir: &quot;./&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;default&apos;,gulp.series([&apos;browser-sync&apos;])); //gulp4以上版本 </span><br></pre></td></tr></table></figure>
+
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="vscode代码片段"><a href="#vscode代码片段" class="headerlink" title="vscode代码片段"></a>vscode代码片段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // Place your snippets for html here. Each snippet is defined under a snippet name and has a prefix, body and</span><br><span class="line">  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span><br><span class="line">  // $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the</span><br><span class="line">  // same ids are connected.</span><br><span class="line">  // Example:</span><br><span class="line">  &quot;pc html&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;dtd&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line"></span><br><span class="line">      &quot;&lt;!DOCTYPE html&gt;&quot;,</span><br><span class="line">      &quot;&lt;html lang=\&quot;zh-CN\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;head&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta charset=\&quot;gbk\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=edge,chrome=1\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;robots\&quot; content=\&quot;all\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Copyright\&quot; content=\&quot;Tencent\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Description\&quot; content=\&quot;\&quot; /&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Keywords\&quot; content=\&quot;\&quot; /&gt;&quot;,</span><br><span class="line">      &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;$1\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;title&gt;&lt;/title&gt;&quot;,</span><br><span class="line"></span><br><span class="line">      &quot;&lt;/head&gt;&quot;,</span><br><span class="line">      &quot;&lt;body&gt;&quot;,</span><br><span class="line">      &quot;$2&quot;</span><br><span class="line">      &quot;&lt;/body&gt;&quot;,</span><br><span class="line">      &quot;&lt;/html&gt;&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;pc html&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;mobile html&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;dtdm&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line"></span><br><span class="line">      &quot;&lt;!DOCTYPE html&gt;&quot;,</span><br><span class="line">      &quot;&lt;html lang=\&quot;zh-CN\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;head&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta charset=\&quot;gbk\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;IE=edge,chrome=1\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;robots\&quot; content=\&quot;all\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Copyright\&quot; content=\&quot;Tencent\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Description\&quot; content=\&quot;\&quot; /&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;Keywords\&quot; content=\&quot;\&quot; /&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;apple-mobile-web-app-capable\&quot; content=\&quot;yes\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;apple-mobile-web-app-status-bar-style\&quot; content=\&quot;black\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;format-detection\&quot; content=\&quot;telephone=no\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;link rel=\&quot;stylesheet\&quot; href=\&quot;$1\&quot;&gt;&quot;,</span><br><span class="line">      &quot;&lt;title&gt;&lt;/title&gt;&quot;,</span><br><span class="line"></span><br><span class="line">      &quot;&lt;/head&gt;&quot;,</span><br><span class="line">      &quot;&lt;script&gt;&quot;,</span><br><span class="line"></span><br><span class="line">      &quot;(function (win,doc)&#123;&quot;,</span><br><span class="line">      &quot;if (!win.addEventListener) return;&quot;,</span><br><span class="line">      &quot;var html=document.documentElement;&quot;,</span><br><span class="line">      &quot;function setFont()&quot;,</span><br><span class="line">      &quot;&#123;&quot;,</span><br><span class="line">      &quot;var cliWidth=html.clientWidth;&quot;,</span><br><span class="line">      &quot;html.style.fontSize=100*(cliWidth/750)+&apos;px&apos;;&quot;,</span><br><span class="line">      &quot;&#125;&quot;,</span><br><span class="line">      &quot;win.addEventListener(&apos;resize&apos;,setFont,false);&quot;,</span><br><span class="line">      &quot;setFont();&quot;,</span><br><span class="line">      &quot;&#125;)(window,document);&quot;,</span><br><span class="line">      &quot;&lt;/script&gt;&quot;,</span><br><span class="line">      &quot;&lt;body&gt;&quot;,</span><br><span class="line">      &quot;$2&quot;</span><br><span class="line">      &quot;&lt;/body&gt;&quot;,</span><br><span class="line">      &quot;&lt;/html&gt;&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;mobile html&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>gulp</tag>
+        <tag>vscodesnippet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql相关记录</title>
+    <url>/2020/02/11/mysql%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<img src="/2020/02/11/mysql%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95/test.jpg" class="">
+
+<h2 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql.server start</span><br></pre></td></tr></table></figure>
+
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -u root -p 123456 //密码</span><br></pre></td></tr></table></figure>
+
+<h2 id="可通过brew安装"><a href="#可通过brew安装" class="headerlink" title="可通过brew安装"></a>可通过brew安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install mysql@5.6</span><br></pre></td></tr></table></figure>
+<p>默认安装最新版本，所以需要注明版本号</p>
+<h2 id="可通过docker安装"><a href="#可通过docker安装" class="headerlink" title="可通过docker安装"></a>可通过docker安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行mysql容器"><a href="#运行mysql容器" class="headerlink" title="运行mysql容器"></a>运行mysql容器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看当前运行的容器状态"><a href="#查看当前运行的容器状态" class="headerlink" title="查看当前运行的容器状态"></a>查看当前运行的容器状态</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行mysql"><a href="#运行mysql" class="headerlink" title="运行mysql"></a>运行mysql</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker start mysql</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建hexo博客并记录相关命令</title>
+    <url>/2019/11/16/hello-world/</url>
+    <content><![CDATA[<p>2019.11.16<br>第一篇文章</p>
+<p>立个flag<br>每月更新一篇</p>
+<h2 id="记录hexo命令"><a href="#记录hexo命令" class="headerlink" title="记录hexo命令"></a>记录hexo命令</h2><h3 id="启动服务器本地测试"><a href="#启动服务器本地测试" class="headerlink" title="启动服务器本地测试"></a>启动服务器本地测试</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h3 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增文章的分类和标签"><a href="#新增文章的分类和标签" class="headerlink" title="新增文章的分类和标签"></a>新增文章的分类和标签</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">tags: //标签</span><br><span class="line">- 博客 </span><br><span class="line">- hexo</span><br><span class="line">categories: 个人 //分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
