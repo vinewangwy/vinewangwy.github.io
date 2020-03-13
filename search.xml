@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>adonuxt和koa对比</title>
+    <url>/2020/03/13/adonuxt%E5%92%8Ckoa%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<p>最近分别接触了一下adonuxt和koa，做了CRUD的demo</p>
+<p>koa<br>开发流程：</p>
+<ul>
+<li>框架搭建</li>
+<li>数据库建表</li>
+<li>sequelize从数据库导出表格到model</li>
+<li>补全相关的增删查改逻辑</li>
+<li>通过route配置接口内容</li>
+<li>前端调用</li>
+</ul>
+<p>adonuxt<br>adonis+nuxt的组合<br>开发流程：</p>
+<ul>
+<li>框架搭建</li>
+<li>adonis make:migration 生成schema，在schema中使用knex建表（好处是方便以后可能存在的数据库迁移）</li>
+<li>adonis make:controller 生成controller，controller中自带增删查改方法，只需要在对应方法中梳理相关逻辑即可</li>
+<li>通过route配置接口内容</li>
+<li>前端调用</li>
+</ul>
+<p>开发过程中用postman测试接口</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>工具人</title>
     <url>/2020/02/12/%E5%B7%A5%E5%85%B7%E4%BA%BA/</url>
     <content><![CDATA[<p>自用趁手工具，记得要不定期记录一下</p>
