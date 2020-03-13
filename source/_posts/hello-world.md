@@ -1,5 +1,6 @@
 ---
 title: 搭建hexo博客并记录相关命令
+date: 2019-11-16
 tags:
 - 博客
 - hexo
